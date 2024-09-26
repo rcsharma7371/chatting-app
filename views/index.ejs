@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App - Connect with Everyone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <img src="placeholder-hero-image.jpg" alt="People using chat app">
+      <h1>Connect with Anyone, Anywhere. Instantly.</h1>
+      <p>Experience seamless communication with our user-friendly chat app.</p>
+      <form action="chat/<%= urlId  %>" method="get">
+        <button class="createPage">Get Started for Free!</button>
+      </form>
+    </section>
+
+    <section class="benefits">
+      <h2>Why Choose Us?</h2>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> Easy to Use</li>
+        <li><i class="fas fa-shield-alt"></i> Secure Communication</li>
+        <li><i class="fas fa-gift"></i> Free and Feature-Rich</li>
+        <li><i class="fas fa-globe"></i> Connect Globally</li>
+      </ul>
+    </section>
+
+    <section class="testimonials">
+      <h2 class="people-say">What People Are Saying</h2>
+      <div class="testimonial-card">
+        <img src="placeholder-person1.jpg" alt="Mark Zuckerberg">
+        <p>"This chat app makes communication effortless and enjoyable. It's a great tool for staying connected with friends and family."</p>
+        <p>- Mark Zuckerberg, Founder of Meta</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="placeholder-person2.jpg" alt="Michelle Obama">
+        <p>"In today's world, staying connected is more important than ever. This app provides a valuable platform for meaningful conversations."</p>
+        <p>- Michelle Obama, Former First Lady of the United States</p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <button>Sign Up Now!</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Chat App. All rights reserved.</p>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+    </ul>
+    <ul class="social-icons">
+      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>

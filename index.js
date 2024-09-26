@@ -1,7 +1,6 @@
 const mysql = require("mysql2");
 const { randomUUID } = require('crypto');
 const express = require('express');
-const { url } = require('inspector');
 const app = express();
 const port = 8080;
 
@@ -27,15 +26,15 @@ app.get('/', (req, res) => {
 
 //Personal page route
 app.get('/chat/:id', (req, res) => {
+    try {
     let { id } = req.params;
     console.log(id);
     let testQuery = `SELECT * FROM page WHERE urlid="${id}"`;
-    try {
-        connection.query(testQuery, (er, reslt) => {
-            let response = reslt;
-            // console.log(reslt.length);
+        connection.query(testQuery, (er, data) => {
+            let response = data;
+            // console.log(data.length);
             if (response.length != 0) {
-                res.render("chat.ejs", { id });
+                res.render("chat.ejs", { id,data });
             }
             else {
                 let q = `INSERT INTO page (urlid) VALUES ('${id}')`;
@@ -94,18 +93,19 @@ app.post("/chat/:id", (req, res) => {
 
     // Parameterized query to prevent SQL injection
     let q = `INSERT INTO message (id, content, urlid) VALUES (?, ?, ?)`;
-    connection.query(q, [messageId, message, id], (err) => {
+    connection.query(q, [messageId, message, id], (err,result) => {
         if (err) {
             console.error(err);
-            return res.status(500).send("Internal server error");
+            return res.status(500).send("Internal server error1");
         }
-
+        //If link is already created
         let q2 = `SELECT * FROM message WHERE urlid = ? ORDER BY new_datetime ASC`;
         connection.query(q2, [id], (error, data) => {
             if (error) {
-                console.error(error);
-                return res.status(500).send("Internal server error");
+                console.log("Error occured  ",error);
+                return res.status(500).send("Internal server error2");
             }
+            console.log("Data found  ",data);
 
             // Pass the data to the 'chat.ejs' view
             // let users = 

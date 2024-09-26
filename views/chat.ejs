@@ -2,150 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <meta http-equiv="refresh" content="2"> -->
     <title>Screenshot</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            width: 1180px;
-            margin: 0 auto;
-        }
-
-        .chat {
-            display: flex;
-            flex-direction: column;
-            height: 90vh;
-            width: 80%;
-            background-color: #f0f2f5;
-            padding: 20px;
-            box-sizing: border-box;
-            justify-content: start;
-            margin: 0 auto;
-            align-items: center;
-            overflow: hidden;
-
-        }
-
-        .chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-
-        .chat-header h1 {
-            font-size: 1.5em;
-            margin: 0;
-        }
-
-        .chat-header .info {
-            display: flex;
-            align-items: center;
-        }
-
-        .chat-header .info .status {
-            margin-left: 5px;
-            font-size: 0.8em;
-            color: #999;
-        }
-
-        .message-list {
-            flex: 1;
-            /* overflow-y: auto; */
-        }
-
-        .message {
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            width: 80%;
-        }
-
-        .message.sent {
-            background-color: #e0f0ff;
-            align-self: flex-end;
-        }
-
-        .message p {
-            margin: 0;
-        }
-
-        .message-input {
-            width: 70%;
-
-        }
-
-        .send {
-            width: 10%;
-        }
-
-        .chat-footer {
-            width: 100%;
-        }
-
-        .message-container {
-            /* display:flex;
-            flex-direction: column-reverse; */
-            align-self: flex-end;
-            /* overflow: auto; */
-
-        }
-
-        .message-container:hover {
-            background-color: #ffffffea;
-            border-radius: 8px;
-
-
-        }
-
-        .user-message {
-            line-height: 2px;
-            display: block;
-            padding: 10px;
-            /* overflow: auto; */
-        }
-
-        .inpt-area {
-            /* position: fixed; */
-            /* bottom: 0px; */
-            z-index: 10;
-            height: 30px;
-            justify-content: center;
-            /* align-items: center; */
-            display: flex;
-            /* display: grid; */
-            gap: 8px;
-            position: fixed;
-            bottom: 5px;
-            width: 85%;
-        }
-
-        .main {
-            overflow: auto;
-            /* display: block; */
-            align-items: end;
-            display: flex;
-            flex-direction: column;
-            padding-right: 20px;
-            /* scroll-snap-type: y mandatory; */
-            margin-bottom: 20px;
-        }
-
-        form {
-            width: 80%;
-            /* justify-content: center; */
-            display: flex;
-            gap: 8px;
-            margin: 0 auto;
-        }
-    </style>
+    <!-- <link rel="stylesheet" href="../public/message.css"> -->
+     <link rel="stylesheet" href="message.css">
 </head>
 
 <body>
@@ -154,10 +16,6 @@
             <h1>
                 <%= id %><span class="status">&#9670;</span>
             </h1>
-            <!-- <div class="info">
-                <img src="profile.png" alt="Profile avatar" width="30" height="30">
-                <span class="status">Business Account</span>
-            </div> -->
         </div>
         <div class="main">
             <div class="message-list">
@@ -165,15 +23,15 @@
                     <p>TODAY</p>
                 </div>
                 <div class="message received">
-                    <p>Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or
-                        listen
-                        to them. Click to learn more</p>
+                    <p>
+                        Messages are end-to-end encrypted. No one outside of this chat,
+                        not even Owner, can read or listen to them
+                    </p>
                 </div>
             </div>
 
-
-
             <% if(data!={}) {%>
+                <%= console.log(data) %>
                 <% for(user of data){ %>
                     <div class="message-container">
                         <p class="user-message">
@@ -181,44 +39,42 @@
                         </p>
                     </div>
                     <% } %>
-                        <% }else{ %>
-                            <div class="message-container">
-                                <p class="user-message"></p>
-                            </div>
-                            <% } %>
+                        <% } %>
         </div>
     </div>
     <div class="chat-footer inpt-area">
-        <form action="#" method="post" >
-            <input type="text" placeholder="Type a message" class="message-input" name="message">
+        <form action="#" method="post">
+            <input type="text" placeholder="Type a message" class="message-input" name="message" autofocus/>
             <button class="send">Send</button>
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-rc.5/html2canvas.min.js"></script>
     <script>
-        const chat = document.querySelector('.chat');
-        const button = document.querySelector('button');
-        const send = document.querySelector('.send');
-        const inp = document.querySelector('.message-input');
+        // const chat = document.querySelector(".chat");
+        // const button = document.querySelector("button");
+        const send = document.querySelector(".send");
+        const inp = document.querySelector(".message-input");
 
-        send.addEventListener('click', () =>{
-            console.dir(inp.val);
+        send.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.dir(inp);
+
         });
 
-        let container = document.querySelector(".chat");
-        function scrollToBottom() {
-            // Check if the content overflows
-            if (container.scrollHeight > container.clientHeight) {
-                // Scroll to the bottom
-                container.scrollTop = container.scrollHeight - container.clientHeight;
-            }
-        }
+        // let container = document.querySelector(".chat");
+        // function scrollToBottom() {
+        //     // Check if the content overflows
+        //     if (container.scrollHeight > container.clientHeight) {
+        //         // Scroll to the bottom
+        //         container.scrollTop = container.scrollHeight - container.clientHeight;
+        //     }
+        // }
 
-        // Call scrollToBottom whenever new content is added
-        container.addEventListener('DOMNodeInserted', scrollToBottom);
+        // // Call scrollToBottom whenever new content is added
+        // container.addEventListener("DOMNodeInserted", scrollToBottom);
 
-        // Optionally, call scrollToBottom initially if content is already present
-        scrollToBottom();
+        // // Optionally, call scrollToBottom initially if content is already present
+        // scrollToBottom();
     </script>
 </body>
 

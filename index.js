@@ -109,7 +109,7 @@ app.post("/chat/:id", (req, res) => {
 
             // Pass the data to the 'chat.ejs' view
             // let users = 
-            console.log(data)
+            // console.log(data)
             res.render('chat.ejs', {
                 id: id,
                 data: data

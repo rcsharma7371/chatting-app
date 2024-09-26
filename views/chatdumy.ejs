@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Screenshot</title>
-    <link rel="stylesheet" href="../public/message.css">
+    <link rel="stylesheet" href="/message.css">
 
 </head>
 <body>
@@ -31,13 +31,13 @@
         
         <div class="chat-footer">
             <form action="/chat/<%=id %>" method="post">
-                <input type="text" placeholder="Type a message" class="message-input"name="message">
+                <input type="text" placeholder="Type a message" class="message-input"name="message" autofocus>
                 <button class="send">Send</button>
             </form>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-rc.5/html2canvas.min.js"></script>
-    <script>
+    <!-- <script>
         const chat = document.querySelector('.chat');
         const button = document.querySelector('button');
 
@@ -50,6 +50,6 @@
                 link.click();
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>

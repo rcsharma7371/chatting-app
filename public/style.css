@@ -215,3 +215,9 @@ footer ul li a:hover {
 .social-icons a:hover {
     color: #ccc;
 }
+
+.testimonial-card{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
